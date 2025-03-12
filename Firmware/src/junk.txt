@@ -1,0 +1,133 @@
+    /*
+    flash1.write_enable();
+    delay(10);
+    flash1.block_erase(0);
+    delay(10);
+    Serial.print("Block erase result: " );
+    Serial.println(flash1.read_status_1());
+    //delay(10);
+    uint8_t test_buffer[2048];
+    for (uint8_t i = 0; i < 200; i++) {
+        test_buffer[i] = i;
+    }
+    flash2.write_enable();
+    delay(1);
+    flash2.erase_4kb(0);
+    delay(100);
+    
+    flash2.write_enable();
+    delay(1);
+    flash2.page_program(0, test_buffer, 32);
+
+    flash1.write_data_blocking(2048 * 16, test_buffer, 2048);
+    //flash1.program_load(0,test_buffer,2048);
+
+    Serial.print("Result :");
+    //Serial.println(result);
+    Serial.println("Protection:");
+    Serial.println(flash1.read_protection(), HEX);
+
+    delay(2);
+    */
+
+    // LittleFS.begin();
+
+    // Set up the USB disk share
+    // usbFileDrive.onDelete(deleteCSV);
+    // usbFileDrive.onPlug(plug);
+    // usbFileDrive.onUnplug(unplug);
+    // usbFileDrive.begin("data.csv", "Recorded data from the Raspberry Pi Pico.csv");
+
+    // Find the last written data
+    /*
+    File f = LittleFS.open("data.csv", "r");
+    if (!f || !f.size()) {
+      cnt = 1;
+      headerCSV();
+    } else {
+      if (f.size() > 2048) {
+        f.seek(f.size() - 1024);
+      }
+      do {
+        String s = f.readStringUntil('\n');
+        sscanf(s.c_str(), "%lu,", &cnt);
+      } while (f.available());
+      f.close();
+      cnt++;
+    }
+
+    Serial.printf("Starting acquisition at %lu\n", cnt);
+    */
+
+
+
+
+    //Serial.printf("Vbat: %.2f, rp2040 temp %f\n", get_vbat(), analogReadTemp());
+    //Serial.println(get_download_btn());
+    //double reading = adc.scaleIcTemp(adc.readRaw(4)); //  (0, 2.5, 2.5);
+    //Serial.print("Reading: ");
+    //Serial.print(reading,4);
+    //Serial.println();
+    /*
+    float temp = analogReadTemp();
+    uint32_t hwrand = rp2040.hwrand32();
+    // Make sure the USB connect doesn't happen while we're writing!
+    noInterrupts();
+    if (okayToWrite) {
+      Serial.printf("Sampling...%lu\n", cnt);
+      // Don't want the USB to connect during an update!
+      //File f = LittleFS.open("data.csv", "a");
+      //if (f) {
+      //  f.printf("%lu,%lu,%f,%lu\n", cnt++, millis(), temp, hwrand);
+      //  f.close();
+      //}
+    } else {
+      Serial.println("Not not available...");
+    }
+    interrupts();
+    */
+
+    /*
+    Serial.print("JEDEC ID: 0x");
+    Serial.println(flash.getJEDECID(), HEX);
+    Serial.print("Flash size: ");
+    Serial.print(flash.size() / 1024);
+    Serial.println(" KB");
+    */
+
+    /*
+    SPISettings spiSettings( 1000000, MSBFIRST, SPI_MODE0 );
+    SPI.beginTransaction(spiSettings);
+    digitalWrite(FLASH1_CS, LOW);
+    SPI.transfer( 0x9F );
+    uint8_t manufacturerID = SPI.transfer( 0x00 );
+    uint8_t deviceID0 = SPI.transfer( 0x00 );
+    uint8_t deviceID1 = SPI.transfer( 0x00 );
+
+    digitalWrite( FLASH1_CS, HIGH );
+    SPI.endTransaction();
+
+    delay(1000);
+    Serial.print( "0x9F: 0x" );
+    Serial.print( manufacturerID, HEX );
+    Serial.print( ":" );
+    Serial.print( deviceID0, HEX );
+    Serial.print( ":" );
+    Serial.println( deviceID1, HEX );
+
+    Serial.println(flash1.jedec_id(), HEX);
+
+    //flash2.read_data(0, flash_buffer, 32);
+    flash1.read_data_blocking(2048 * 16, flash_buffer, 2048);
+    //flash1.read_from_cache(0,flash_buffer,2048);
+    for (int i = 0; i < 32; i++) {
+        Serial.print(flash_buffer[i], HEX);
+    }
+
+    Serial.println(); 
+
+    digitalWriteFast(LED_LOGGING, !digitalReadFast(LED_LOGGING));
+    digitalWriteFast(LED_LOWBAT, vbat < 3.85);
+    //digitalWriteFast(LED_HALF_FULL, 1);
+    */
+    //Serial.println(Thermocouple::temperatureToVoltage_T(20.0));
